@@ -36,7 +36,7 @@ export default function Home() {
         let item = {
           price,
           tokenId: i.tokenId.toNumber(),
-          seler: i.seller,
+          seller: i.seller,
           owner: i.owner,
           image: meta.data.image,
           name: meta.data.name,
