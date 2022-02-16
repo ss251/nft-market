@@ -32,7 +32,7 @@ export default function Home() {
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
         const meta = await axios.get(tokenUri);
-        let price = ethers.utils.formatUtils(i.price.toString(), "ether");
+        let price = ethers.utils.formatUnits(i.price.toString(), "ether");
         let item = {
           price,
           tokenId: i.tokenId.toNumber(),
