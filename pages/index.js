@@ -19,7 +19,9 @@ export default function Home() {
   }, []);
 
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider();
+    const provider = new ethers.providers.JsonRpcProvider(
+      "https://rpc-mumbai.matic.today"
+    );
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(
       nftmarketaddress,
@@ -55,7 +57,11 @@ export default function Home() {
     const provider = new ethers.providers.Web3Provider(connection);
 
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+    const contract = new ethers.Contract(
+      nftmarketaddress,
+      NFTMarket.abi,
+      signer
+    );
 
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
@@ -78,7 +84,7 @@ export default function Home() {
       <div className="px-4" style={{ maxWidth: "1600px" }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {NFTs.map((nft, i) => (
-            <div key={i} className="bprder shadow rounded-xl overflow-hidden">
+            <div key={i} className="border shadow rounded-xl overflow-hidden">
               <img src={nft.image} />
               <div className="p-4">
                 <p
@@ -96,8 +102,8 @@ export default function Home() {
                   {nft.price} MATIC
                 </p>
                 <button
-                  className="w-full bg-pink-500 text-white font-bol py-2 px-12 rounded"
-                  onClick={() => buyNft(nft)}
+                  className="w-full bg-orange-500 text-white font-bol py-2 px-12 rounded"
+                  onClick={() => buyNFT(nft)}
                 >
                   Buy
                 </button>
@@ -106,7 +112,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <h1>Home</h1>
     </div>
   );
 }
