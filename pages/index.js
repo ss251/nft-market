@@ -5,8 +5,8 @@ import Web3Modal from "web3modal";
 
 import { nftaddress, nftmarketaddress } from "../config";
 
-import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
-import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
+import NFT from "../utils/NFT.json";
+import NFTMarket from "../utils/NFTMarket.json";
 
 let rpcEndpoint = null;
 
@@ -85,7 +85,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {NFTs.map((nft, i) => (
             <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <img src={nft.image} />
+              <img style={{ height: "20rem", width: "100%" }} src={nft.image} />
               <div className="p-4">
                 <p
                   style={{ height: "64px" }}

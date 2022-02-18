@@ -5,8 +5,8 @@ import Web3Modal from "web3modal";
 
 import { nftmarketaddress, nftaddress } from "../config";
 
-import NFTMarket from "../artifacts/contracts/NFTMarket.sol/NFTMarket.json";
-import NFT from "../artifacts/contracts/NFT.sol/NFT.json";
+import NFT from "../utils/NFT.json";
+import NFTMarket from "../utils/NFTMarket.json";
 
 export default function CreatorDashboard() {
   const [NFTs, setNFTs] = useState([]);
@@ -60,7 +60,11 @@ export default function CreatorDashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
           {NFTs.map((nft, i) => (
             <div key={i} className="border shadow rounded-xl overflow-hidden">
-              <img src={nft.image} className="rounded" />
+              <img
+                style={{ height: "20rem", width: "100%" }}
+                src={nft.image}
+                className="rounded"
+              />
               <div className="p-4 bg-black">
                 <p className="text-2xl font-bold text-white">
                   Price - {nft.price} MATIC
